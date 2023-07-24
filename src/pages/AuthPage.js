@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SignUpForm from '../components/SignUpForm'
 import LoginForm from '../components/LoginForm'
 import LogOut from '../components/LogOut'
+import CreateDebit from '../components/CreateDebit'
 export default function AuthPage(props) {
      return(
           <main>
@@ -9,6 +10,7 @@ export default function AuthPage(props) {
                <SignUpForm setUser={props.setUser}/>
                <LoginForm setUser={props.setUser}/>
                <LogOut setUser={props.setUser}/>
+               <CreateDebit />
           </main>
      )
 }
