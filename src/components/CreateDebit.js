@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react'
-
-
-
 export default function CreateDebit ({ user, setUser }){
 
     const [debits, setDebits] = useState([])
@@ -21,7 +18,6 @@ export default function CreateDebit ({ user, setUser }){
         barter: false
     })
 
-    // index
     const getDebits = async () => {
         try {
             const response = await fetch('/api/debits')
@@ -31,7 +27,7 @@ export default function CreateDebit ({ user, setUser }){
             console.error(error)
         }
     }
-    // delete
+    
     const deleteDebit = async (id) => {
         try {
             const response = await fetch(`/api/debits/${id}`, {
@@ -46,7 +42,7 @@ export default function CreateDebit ({ user, setUser }){
             console.error(error)
         }
     }
-    // update
+    
     const updateDebit = async (id, updatedData) => {
         try {
             const response = await fetch(`/api/debits/${id}`, {
@@ -62,8 +58,8 @@ export default function CreateDebit ({ user, setUser }){
             console.error(error)
         }
     }
-    // create
-        const createDebit = async () => {
+   
+    const createDebit = async () => {
             try {
                 const response = await fetch(`/api/debits`, {
                     method: "POST",
@@ -76,17 +72,17 @@ export default function CreateDebit ({ user, setUser }){
                 setFoundDebit(data)
                 setNewDebit({
                     dateOfExpense: '',
-        payee: '',
-        description:'',
-        usedFor: 1.99,
-        numUnits: 1, 
-        unitMeasure: '', 
-        subTotal: 1.99, 
-        tax: 0.05, 
-        shipping: 0.00,
-        total: 0.00, 
-        account: '', 
-        barter: false
+                    payee: '',
+                    description:'',
+                    usedFor: 1.99,
+                    numUnits: 1, 
+                    unitMeasure: '', 
+                    subTotal: 1.99, 
+                    tax: 0.05, 
+                    shipping: 0.00,
+                    total: 0.00, 
+                    account: '', 
+                    barter: false
                 })
             } catch (error) {
                 console.error(error)
@@ -109,8 +105,9 @@ export default function CreateDebit ({ user, setUser }){
                         debits.map((debit) => {
                             return (
                                 <li key={debit._id}>
-                                    {debit.name} is {debit.emoji} {debit.barter? 'its a barter sale' : 'paid cash'}
-                                    <br/><button onClick={() => deleteDebit(debit._id)}>X</button>
+                                    {debit.payee} is {debit.dateOfExpense} {debit.barter? 'its a transaction of the barter type ' : 'paid cash'}
+                                    <br/>
+                                    <button onClick={() => deleteDebit(debit._id)}>X</button>
                                 </li>
                             )
                         })
