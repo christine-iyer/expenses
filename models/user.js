@@ -19,7 +19,10 @@ const userSchema = new Schema({
     minlength: 3,
     required: true
   },
-  accountNames: [{type: Schema.Types.ObjectId, ref: "AccountName"}]
+
+  debits: [{ 
+    type: Schema.Types.ObjectId, ref: 'Debit' }]
+
 }, {
   timestamps: true,
   toJSON: {
